@@ -18,10 +18,11 @@ public  class Testcase_Listner extends TestBase implements ITestListener{
 
 
 
-	public void onTestFailure(ITestResult arg0) {
+	public void onTestFailure(ITestResult result) {
+		System.out.println(result.getName()+" test case is failed");
 		try {
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-			String methodname=arg0.getMethod().getMethodName();
+			String methodname=result.getMethod().getMethodName();
 			UtilitiesClass.TakeScreenshot(driver, methodname+"_Failed_.png");
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -29,11 +30,11 @@ public  class Testcase_Listner extends TestBase implements ITestListener{
 
 
 
-	public void onTestSuccess(ITestResult arg0) {
-
+	public void onTestSuccess(ITestResult result) {
+		System.out.println(result.getName()+" test case is passed");
 		try {
 			driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-			String methodname=arg0.getMethod().getMethodName();
+			String methodname=result.getMethod().getMethodName();
 			UtilitiesClass.TakeScreenshot(driver, methodname+".png");
 		} catch (IOException e) {
 
@@ -43,36 +44,37 @@ public  class Testcase_Listner extends TestBase implements ITestListener{
 
 
 
-	public void onFinish(ITestContext arg0) {
+	public void onFinish(ITestContext context) {
+		System.out.println(context.getEndDate()+" test Finished");
+		System.out.println(context.getFailedTests()+" these tests got failed");
+
+	}
+
+
+
+	public void onStart(ITestContext context) {
+		System.out.println(context.getStartDate()+" test started");
+
+	}
+
+
+
+	public void onTestFailedButWithinSuccessPercentage(ITestResult result) {
 		// TODO Auto-generated method stub
 
 	}
 
 
 
-	public void onStart(ITestContext arg0) {
-		// TODO Auto-generated method stub
+	public void onTestSkipped(ITestResult result) {
+		System.out.println(result.getName()+" test case is skipped");
 
 	}
 
 
 
-	public void onTestFailedButWithinSuccessPercentage(ITestResult arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-
-
-	public void onTestSkipped(ITestResult arg0) {
-		// TODO Auto-generated method stub
-
-	}
-
-
-
-	public void onTestStart(ITestResult arg0) {
-		// TODO Auto-generated method stub
+	public void onTestStart(ITestResult result) {
+		System.out.println(result.getName()+" test case is starting");
 
 	}
 
