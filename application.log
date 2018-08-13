@@ -1,0 +1,10 @@
+2018-08-13 21:10:40,360  INFO [main] TestBase:44 - The Chrome browser is opened
+2018-08-13 21:11:37,244  INFO [main] TestBase:44 - The Chrome browser is opened
+2018-08-13 21:12:19,414  INFO [main] HomePageTest:43 - ******************HomePageTestStarts*****************
+2018-08-13 21:12:19,807  INFO [main] HomePageTest:68 - ******************HomePageTestEnds*****************
+2018-08-13 21:12:23,109  INFO [main] TestBase:44 - The Chrome browser is opened
+2018-08-13 21:13:04,691  INFO [main] TestBase:44 - The Chrome browser is opened
+2018-08-13 21:13:47,676  INFO [main] HomePageTest:68 - ******************HomePageTestEnds*****************
+2018-08-13 21:13:51,069  INFO [main] TestBase:44 - The Chrome browser is opened
+2018-08-13 21:14:29,794  INFO [main] TestBase:44 - The Chrome browser is opened
+2018-08-13 21:14:33,579  INFO [main] TestBase:44 - The Chrome browser is opened
