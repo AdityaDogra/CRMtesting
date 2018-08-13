@@ -1,6 +1,7 @@
 package com.qa.crm.testcases;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import org.testng.Assert;
 
@@ -26,33 +27,40 @@ public class HomePageTest extends TestBase {
 		super();
 	}
 
-	 @BeforeMethod
-	 public void setup() throws IOException{
-	 	browserlaunch();
-	 	loginpage = new LoginPage();
-	 	homepage=loginpage.login(file.getProperty("username"), file.getProperty("password"));
-	 }
-	 
-	 @Test(priority=1)
-	 public void verifyhomepagetitletest() throws IOException{
+	@BeforeMethod
+	public void setup() throws IOException{
+		browserlaunch();
+		loginpage = new LoginPage();
+		homepage=loginpage.login(file.getProperty("username"), file.getProperty("password"));
+	}
+
+	@Test(priority=1)
+	public void verifyhomepagetitletest() throws IOException{
 		String titlefromhomepage= homepage.verifyhomepagetitle();
-		 Assert.assertEquals(titlefromhomepage, "CRMPRO","The Title is not expected");
-	 }
-	 
-	 @Test(priority=2)
-	 public void verifyusername() throws IOException{
-		 Assert.assertTrue(homepage.username());
-		 
-	 }
-	 
-	 @Test(priority=3)
-	 public void verifycontactslink() throws IOException{
-		 contactspage=homepage.clickoncontactslink();
-		 
-	 }
-	 @AfterMethod
-	 public void teardown() throws IOException{
-	 	driver.quit();
-	 }
+		Assert.assertEquals(titlefromhomepage, "CRMPRO","The Title is not expected");
+	}
+
+	@Test(priority=2)
+	public void verifyusername() throws IOException{
+		Assert.assertTrue(homepage.username());
+
+	}
+
+	@Test(priority=3)
+	public void verifycontactslink() throws IOException{
+		contactspage=homepage.clickoncontactslink();}
+
+	@Test(priority=4)
+	public void navigateonnewcontacts() throws IOException{
+		contactspage=homepage.selecttheunderlyingfieldsfromcontactstab("New Contact");
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		Assert.assertTrue(contactspage.ContactInformationLabelispresentornot());
+	}
+
+
+	@AfterMethod
+	public void teardown() throws IOException{
+		driver.quit();
+	}
 }
 

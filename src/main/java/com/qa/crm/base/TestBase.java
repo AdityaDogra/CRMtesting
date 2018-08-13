@@ -24,22 +24,22 @@ public class TestBase {
 	public TestBase() throws IOException{
 		file = new Properties();
 		FileInputStream keyfile = new FileInputStream("C:\\Users\\LENOVO\\workspace\\MyFrameworkDesign\\src\\main\\java\\com\\qa\\crm\\config\\config.properties");	
-			file.load(keyfile);
-			
-		}
-	
+		file.load(keyfile);
+
+	}
+
 	/**
 	 * This method is for browser launch
 	 */
 	public static void browserlaunch(){
 		String browsername=file.getProperty("browser");
 		if (browsername.equals("chrome")){
-		System.setProperty("webdriver.chrome.driver",file.getProperty("pathofchromeexefile"));
-		ChromeOptions options= new ChromeOptions();
-		options.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
-		options.setPageLoadStrategy(PageLoadStrategy.NORMAL);//will load the DOM means basic html code not images which will take time to load
-		driver = new ChromeDriver();
-		System.out.println("The Chrome browser is opened");
+			System.setProperty("webdriver.chrome.driver",file.getProperty("pathofchromeexefile"));
+			ChromeOptions options= new ChromeOptions();
+			options.setUnhandledPromptBehaviour(UnexpectedAlertBehaviour.ACCEPT);
+			options.setPageLoadStrategy(PageLoadStrategy.NORMAL);//will load the DOM means basic html code not images which will take time to load
+			driver = new ChromeDriver();
+			System.out.println("The Chrome browser is opened");
 		}
 		else {
 			System.setProperty("webdriver.ie.driver", file.getProperty("pathofIEexefile"));
@@ -52,8 +52,8 @@ public class TestBase {
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		driver.get(file.getProperty("url"));
 	}
-	}
-	
-	
-	
+}
+
+
+
 

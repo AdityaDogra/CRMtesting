@@ -15,15 +15,23 @@ public class ContactsPage extends TestBase {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath="//td[contains(text(),'Contacts')]")
+	@FindBy(xpath="//td[@align='left' and contains(text(),'Contacts')]")
 	WebElement contactslabel;
 
-//actions
+	@FindBy(xpath="//legend[contains(text(),'Contact Information') and @class ='fieldset']")
+	WebElement ContactInformationLabel;
+	//actions
 
-public boolean contactslabelpresentornot(){
-	return contactslabel.isDisplayed();
-	
-}}
+	public boolean contactslabelpresentornot(){
+		return contactslabel.isDisplayed();
+
+	}
+
+	public boolean ContactInformationLabelispresentornot(){
+		return ContactInformationLabel.isDisplayed();
+
+	}
+}
 
 
 
